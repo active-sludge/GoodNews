@@ -8,9 +8,18 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
+// MARK: - ArticleList
+struct ArticleList: Codable {
     let articles: [Article]
+}
+
+extension ArticleList {
+    
+    static var all: Resource<ArticleList> = {
+        let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=709be4abf02d4339bbd10bfb4a1420a0")!
+        return Resource(url: url)
+    }()
+    
 }
 
 // MARK: - Article
